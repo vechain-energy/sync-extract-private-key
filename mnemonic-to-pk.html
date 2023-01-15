@@ -1,0 +1,105 @@
+<html>
+
+<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
+</script>
+<script>
+  function handlemnemonic() {
+
+    document.getElementById('privateKey').innerText = ''
+    document.getElementById('address').innerText = ''
+    document.getElementById('error').innerText = ''
+
+    try {
+      const words = document.getElementById('mnemonic').value
+      const path = document.getElementById('path').value
+      if (!words) {
+        throw new Error('Please enter seed words')
+      }
+
+      const wallet = ethers.Wallet.fromMnemonic(words, path);
+      document.getElementById('privateKey').innerText = wallet.privateKey
+      document.getElementById('address').innerText = wallet.address
+      document.getElementById('result').style.display = ''
+    }
+    catch (err) {
+      alert(err.message)
+      console.error(err.message)
+    }
+  }
+</script>
+
+<style>
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  textarea, input {
+    font-family: "Courier New";
+  }
+
+  input,
+  button,
+  textarea,
+  table {
+    width: 100%;
+  }
+
+  button,
+  input,
+  textarea {
+    line-height: 2rem;
+    padding: 0.25rem;
+    margin-top: 1rem;
+  }
+
+  code {
+    font-size: 1rem;
+  }
+
+  h1,
+  h2 {
+    margin-top: 3rem;
+  }
+
+  .warning {
+    color: red;
+  }
+</style>
+
+<body>
+  <div style="width: 640px; margin: auto;">
+    <h1>Convert mnemonic Words into Private Key</h1>
+    <p>
+      Use caution when converting mnemonic words into a private key.
+    </p>
+    <p>
+      Only proceed if you fully understand the potential risks. Entering your seed phrase or mnemonic will reveal your
+      private key in this browser window and may also make it accessible to malicious applications.
+    </p>
+    <h2>Enter your mnemonic words</h2>
+    <textarea id="mnemonic"></textarea>
+    <h2>Derivation Path</h2>
+    <p>Leave <code>m/44'/818'/0'/0/0</code> for VeChain-Wallets.</p>
+    <input id="path" value="m/44'/818'/0'/0/0" />
+    <button onClick="handlemnemonic()">convert to private key</button>
+    <code id="error"></code>
+
+    <div style="display: none;" id="result">
+      <h2>Extracted Wallet</h2>
+
+      <h3>Address</h3>
+      <code id="address"></code>
+      <h3>Private Key</h3>
+      <code id="privateKey"></code>
+
+
+      <p class="warning">
+        Warning: Do not continue to use this private key/seed phrase.<br />
+        <br />
+        It is highly recommended that you transfer your funds to a new wallet as soon as possible.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

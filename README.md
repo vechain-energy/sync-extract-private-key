@@ -2,10 +2,10 @@ Snippets on how to extract the private key from Sync1 and Sync2 backups
 
 # Sync2
 
-Write down the memnonic words and use `memnonic-to-pk.js`:
+Write down the mnemonic words and use `mnemonic-to-pk.js`:
 
 ```shell
-$ WORDS="ceiling exhaust wink burger glory unique burger supply foam enable axis coil" node memnonic-to-pk.js 
+$ WORDS="ceiling exhaust wink burger glory unique burger supply foam enable axis coil" node mnemonic-to-pk.js 
 
 Wallet {
   signingKey: SigningKey {
