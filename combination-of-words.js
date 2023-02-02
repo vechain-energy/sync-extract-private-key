@@ -26,7 +26,7 @@ function getAddressForCombination(words) {
 
 async function generateCombinations(words) {
   const progressBar = new cliProgress.SingleBar({ format: 'progress [{bar}] {percentage}% | {value}/{total} | {words}' }, cliProgress.Presets.shades_classic);
-  progressBar.start(Math.pow(words.length, words.length))
+  progressBar.start(factorial(words.length))
 
   const combinations = [];
 
@@ -39,7 +39,7 @@ async function generateCombinations(words) {
         if (balance !== '0x0') {
           console.log('\n', address, currentCombination.join(' '), balance)
         }
-        // combinations.push(currentCombination);
+        combinations.push(currentCombination);
       }
       catch (err) {
         if (err.message !== 'invalid checksum') {
@@ -60,6 +60,12 @@ async function generateCombinations(words) {
 
   return combinations;
 }
+
+function factorial(n) {
+  if (n === 0) return 1;
+  return n * factorial(n - 1);
+}
+
 
 
 main()
