@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@vechain/ethers": "^4.0.27-5"
+    "@vechain/ethers": "^4.0.27-5",
+    "bent": "^7.3.12",
+    "cli-progress": "^3.11.2"
   }
 }
