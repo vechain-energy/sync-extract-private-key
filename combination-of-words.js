@@ -39,7 +39,6 @@ async function generateCombinations(words) {
         if (balance !== '0x0') {
           console.log('\n', address, currentCombination.join(' '), balance)
         }
-        combinations.push(currentCombination);
       }
       catch (err) {
         if (err.message !== 'invalid checksum') {
