@@ -2,7 +2,7 @@ const ethers = require('@vechain/ethers')
 
 try {
   if (!process.env.KEYSTORE || !process.env.PASSWORD) {
-    throw new Error('Call with KEYSOTRE=<file> node keystore-to-pk.js')
+    throw new Error('Call with KEYSTORE=<file> node keystore-to-pk.js')
   }
 
   ethers.Wallet.fromEncryptedJson(require('fs').readFileSync(process.env.KEYSTORE), process.env.PASSWORD).then(wallet => {
